@@ -1,0 +1,8 @@
+JPA resumo:
+	Entity Manager - Encapsula uma conexão com a base de dados. (monitora e executa operações de acesso de dados)
+	Escopo - Mantem uma unica Entity manager para cada requisição/thread do sistema.
+	Entity Manager Factory - Instancia o Entity Manager (uma por aplicação).
+	@Entity define uma classe como uma entidade do JPA
+	
+//Para estudos Apenas - Docker + Persistencia
+docker run --name SQLStudy -v MySQLVol:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
