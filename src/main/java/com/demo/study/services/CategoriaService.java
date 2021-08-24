@@ -22,6 +22,8 @@ nesse sentido, mas que não são relevantes Agora.
     private CategoriaRepository repo;
 
     public Categoria buscar(Integer id){
+        /*O Optional é uma longa discussão sobre o tipo de obj, que pode ser ou não nulo. presente desde o Java 1.8
+        para definir se um valor está ou não presente apos a execucao da consulta */
         Optional<Categoria> obj = repo.findById(id);
         return obj.orElse(null);
     }
