@@ -1,9 +1,5 @@
 package com.demo.study.domain;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +7,25 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+
+/*
+* Aqui é declarado como entidade que sera usada em comunicação/geração de query e criação dos objetos
+* para manipulação posterior das classes.
+*
+* */
+
 @Entity
 public class Categoria implements Serializable {
+    /*
+    * implements Serializable define que os dados poderão ser gravados em arquivo (Json por exemplo)
+    * o que facilita no futuro lidar com esses dados em uma API.
+    * */
     private static final long serialVersionUID = 1L;
+
+    /*
+    * Notação de banco que indica que essa é a chave primaria e é um valor gerado pelo banco.
+    *
+    * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -43,6 +55,10 @@ public class Categoria implements Serializable {
         this.nome = nome;
     }
 
+
+    /*Hash code e equals permite verificar se o objeto é identico levando em conta a existencia do hash
+    * de forma a definir se é exatamente o msm obj ou não.
+    * */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

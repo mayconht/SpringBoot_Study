@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+* Aqui é onde a magica acontece.
+* As comunicações REST se dão dentro da Resources onde é definido o RestController e o Mapping do endpoint.
+*
+* */
+
+
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
