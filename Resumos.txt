@@ -5,4 +5,5 @@ JPA resumo:
 	@Entity define uma classe como uma entidade do JPA
 	
 //Para estudos Apenas - Docker + Persistencia
-docker run --name SQLStudy -v MySQLVol:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+docker pull mysql:latest
+docker run --name SQLStudy -v MySQLVol:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
