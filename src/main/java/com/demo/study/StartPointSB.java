@@ -20,6 +20,10 @@ public class StartPointSB implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        
+        /*
+        * String... é o mesmo que String[]
+        * Pode receber varios parametros.
+        * */
+
     }
 }
