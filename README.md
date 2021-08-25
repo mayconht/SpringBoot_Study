@@ -18,7 +18,7 @@ Vou seguir estudando e postando partes do que for aprendendo aqui, portanto o re
  class Joke {
  public static void main(String args[]){
      System.out.println("I'm trying to teach my cat Java programming..." + 
-                         "But he keeps complaining about a NullLaserPointerException`.")
+                         "But he keeps complaining about a NullLaserPointerException`.");
  }
 }
 
