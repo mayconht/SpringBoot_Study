@@ -1,0 +1,15 @@
+Programação orientada a Objetos:
+-> Abstraction	
+	Capacidade de Tirar do mundo real para o mundo computacional.
+-> Encapsulation
+	Proteger os dados contra acesso indevido.
+-> Polymorphism
+	Os Metodos podem ter a mesma assinatura com comportamentos distintos (para classes derivadas de uma superclasse)
+-> Inheritance
+	A Capacidade de herdar metodos e atributos de uma superclasse
+-> Predefined types 
+	Tipos de dados existentes (tipos primitivos)
+-> User-defined types
+	Tipos de dados criados a partir de metodos, classes e implementações.
+-> Operations 
+	Operações basicas e avançadas, matematicas e logicas.
