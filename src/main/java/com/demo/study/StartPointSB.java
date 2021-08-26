@@ -59,6 +59,6 @@ public class StartPointSB implements CommandLineRunner {
 
         categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
         produtoRepository.saveAll(Arrays.asList(p1,p2,p3));
-        
+
     }
 }
