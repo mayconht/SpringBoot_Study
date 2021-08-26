@@ -2,6 +2,7 @@ package com.demo.study.services;
 
 import com.demo.study.domain.Categoria;
 import com.demo.study.repositories.CategoriaRepository;
+import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +22,10 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository repo;
 
-    public Categoria buscar(Integer id) {
+    public Categoria buscar(Integer id) throws ObjectNotFoundException {
         /*O Optional é uma longa discussão sobre o tipo de obj, que pode ser ou não nulo. presente desde o Java 1.8
         para definir se um valor está ou não presente apos a execucao da consulta */
         Optional<Categoria> obj = repo.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto n!ao encontrado! Id: " + id + ",  Tipo: " + Categoria.class.getName()));
     }
 }
