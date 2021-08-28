@@ -15,16 +15,16 @@ import java.util.Optional;
 @Service
 public class CategoriaService {
 
-    /*Autowired injeta as dependencias de repo direto na classe
+    /*Autowired injeta as dependencies de repo direto na classe
         o que retira a necessidade de instanciar a classe (NEW) existem mais coisas
         nesse sentido, mas que não são relevantes Agora.
     */
     @Autowired
     private CategoriaRepository repo;
 
-        /*O Optional é uma longa discussão sobre o tipo de obj, que pode ser ou não nulo. presente desde o Java 1.8
+        /*O Optional é uma longa discussão sobre o tipo de obj, que pode ser ou não nulo. Presente desde o Java 1.8
         para definir se um valor está ou não presente apos a execucao da consulta */
-    public Categoria buscar(Integer id) {
+    public Categoria buscar(Integer id) throws ObjectNotFoundException {
         Optional<Categoria> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
