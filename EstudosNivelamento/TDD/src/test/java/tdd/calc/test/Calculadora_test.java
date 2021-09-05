@@ -8,12 +8,10 @@ public class Calculadora_test {
 
     @Test
     public void deveriaSomarDoisValoresPassados() throws Exception {
-        int valA = 1;
-        int valB = 2;
-        int soma = 0;
+        Calculadora calc = new Calculadora();
+        int soma = calc.soma(1,2);
 
         assertEquals(3, soma);
-
     }
 }
 
