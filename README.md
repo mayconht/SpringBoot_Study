@@ -1,4 +1,4 @@
-# SpringBoot, Hibernate, Java e Mongo (um tiquim de Docker tbm)
+# SpringBoot, Hibernate, Java, Junit e Mongo (um tiquim de Docker tbm)
 
 Basicamente este é meu repositorio de estudos sobre o assunto do titulo.
 
