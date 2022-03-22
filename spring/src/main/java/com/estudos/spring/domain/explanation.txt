@@ -1,0 +1,2 @@
+Serializable - Que pode ser convertido em sequencia de Bytes. (arquivos)
+Sempre importar o JAVAx ao inves do Hibernate.
