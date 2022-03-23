@@ -6,7 +6,7 @@ Vou seguir estudando e postando partes do que for aprendendo aqui, portanto o re
 
 ## Tecnologias Utilizadas.
 
-* [Docker](https://www.docker.com/) Para criar containeres de MySQL e MongoDB.
+* [Docker](https://www.docker.com/) Para criar containeres de MySQL e MongoDB com persistencia.
 * [Java 11](https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html) Linguagem do Projeto.
 * [SpringBoot](https://spring.io/projects/spring-boot) Framework de infraestrutura de suporte para criação de serviços
 * [MySQL](https://www.mysql.com/) Banco de dados Relacional
