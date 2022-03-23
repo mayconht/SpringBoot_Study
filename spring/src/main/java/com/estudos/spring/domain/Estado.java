@@ -1,5 +1,7 @@
 package com.estudos.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -15,6 +17,8 @@ public class Estado implements Serializable {
     private String nome;
     private String uf;
 
+
+    @JsonBackReference
     @OneToMany(mappedBy = "estado") // da classe cidade que faz o mapeamento principal.
     private List<Cidade> cidades;
 

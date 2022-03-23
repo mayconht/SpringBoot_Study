@@ -33,39 +33,39 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 //	 	Only use with H2 database (temporary data)
-		Categoria cat1 = new Categoria(null, "Informática");
-		Categoria cat2 = new Categoria(null, "Escritório");
-
-		Produto p1 = new Produto(null, "Impressora", 800.00);
-		Produto p2 = new Produto(null, "Mouse", 300.00);
-		Produto p3 = new Produto(null, "Teclado", 150.00);
-
-		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
-		cat2.getProdutos().addAll(Arrays.asList(p1));
-
-		p1.getCategorias().addAll(Arrays.asList(cat1, cat2));
-		p2.getCategorias().addAll(Arrays.asList(cat1));
-		p3.getCategorias().addAll(Arrays.asList(cat1));
-
-		catRepo.saveAll(Arrays.asList(cat1, cat2));
-		prodRepo.saveAll(Arrays.asList(p1,p2,p3));
-
-        Estado est1  = new Estado(null, "Espírito Santo", "ES");
-
-        Cidade cid1 = new Cidade(null, "Alegre", est1);
-
-        Cliente cli1 = new Cliente(null, "maycon douglas", "maycondss@live.com", "45852336859", TipoCliente.PESSOAFISICA);
-        cli1.getTelefones().addAll(Arrays.asList("+551530313161", "+556230343312"));
-
-        Endereco end1 = new Endereco(null, "Rua sei la das quantas", "300", null, "Jardiam", "3856125", cli1, cid1 );
-        Endereco end2 = new Endereco(null, "Rua sei la dasaaaaaa quantas", "300s", null, "Jardim", "3856125", cli1, cid1);
-
-        cli1.getEnderecos().addAll(Arrays.asList(end1, end2));
-
-        estadoRepository.saveAll(Arrays.asList(est1));
-        cidadeRepository.saveAll(Arrays.asList(cid1));
-        clienteRepository.saveAll(Arrays.asList(cli1));
-        enderecoRepository.saveAll(Arrays.asList(end1,end2));
+//		Categoria cat1 = new Categoria(null, "Informática");
+//		Categoria cat2 = new Categoria(null, "Escritório");
+//
+//		Produto p1 = new Produto(null, "Impressora", 800.00);
+//		Produto p2 = new Produto(null, "Mouse", 300.00);
+//		Produto p3 = new Produto(null, "Teclado", 150.00);
+//
+//		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
+//		cat2.getProdutos().addAll(Arrays.asList(p1));
+//
+//		p1.getCategorias().addAll(Arrays.asList(cat1, cat2));
+//		p2.getCategorias().addAll(Arrays.asList(cat1));
+//		p3.getCategorias().addAll(Arrays.asList(cat1));
+//
+//		catRepo.saveAll(Arrays.asList(cat1, cat2));
+//		prodRepo.saveAll(Arrays.asList(p1,p2,p3));
+//
+//        Estado est1  = new Estado(null, "Espírito Santo", "ES");
+//
+//        Cidade cid1 = new Cidade(null, "Alegre", est1);
+//
+//        Cliente cli1 = new Cliente(null, "maycon douglas", "maycondss@live.com", "45852336859", TipoCliente.PESSOAFISICA);
+//        cli1.getTelefones().addAll(Arrays.asList("+551530313161", "+556230343312"));
+//
+//        Endereco end1 = new Endereco(null, "Rua sei la das quantas", "300", null, "Jardiam", "3856125", cli1, cid1 );
+//        Endereco end2 = new Endereco(null, "Rua sei la dasaaaaaa quantas", "300s", null, "Jardim", "3856125", cli1, cid1);
+//
+//        cli1.getEnderecos().addAll(Arrays.asList(end1, end2));
+//
+//        estadoRepository.saveAll(Arrays.asList(est1));
+//        cidadeRepository.saveAll(Arrays.asList(cid1));
+//        clienteRepository.saveAll(Arrays.asList(cli1));
+//        enderecoRepository.saveAll(Arrays.asList(end1,end2));
 
     }
 }
