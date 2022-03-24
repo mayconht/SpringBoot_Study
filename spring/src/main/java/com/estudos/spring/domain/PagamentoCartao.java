@@ -2,21 +2,23 @@ package com.estudos.spring.domain;
 
 import com.estudos.spring.domain.enums.EstadoPagamento;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
-public class PagamentoCartão extends Pagamento {
+@Entity
+public class PagamentoCartao extends Pagamento {
     private static final long serialVersionUID = 1L;
 
     private Integer numeroParcelas;
 
-    public PagamentoCartão() {
+    public PagamentoCartao() {
     }
 
-    public PagamentoCartão(Integer numeroParcelas) {
+    public PagamentoCartao(Integer numeroParcelas) {
         this.numeroParcelas = numeroParcelas;
     }
 
-    public PagamentoCartão(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {
+    public PagamentoCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {
         super(id, estado, pedido);
         this.numeroParcelas = numeroParcelas;
     }

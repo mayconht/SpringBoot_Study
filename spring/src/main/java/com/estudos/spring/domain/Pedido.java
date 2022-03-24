@@ -19,20 +19,20 @@ public class Pedido implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido") //Mapeamento 1 pra 1 com pedido e pagamento com mesmo ID. //Cascade é o processo de cascatear dependencias para que seja criada ou deletada em conjunto.
     private Pagamento pagamento;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "endereco_entrega_id")
     private Endereco enderecoEntrega;
 
     public Pedido() {
     }
 
-    public Pedido(Integer id, Date instante, Pagamento pagamento, Cliente cliente, Endereco enderecoEntrega) {
+    public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoEntrega) {
         this.id = id;
         this.instante = instante;
-        this.pagamento = pagamento;
         this.cliente = cliente;
         this.enderecoEntrega = enderecoEntrega;
     }
