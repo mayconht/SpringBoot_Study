@@ -9,17 +9,16 @@ public class PagamentoCartão extends Pagamento {
 
     private Integer numeroParcelas;
 
-    public PagamentoCartão(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {
-        super(id, estado, pedido);
-        this.numeroParcelas = numeroParcelas;
+    public PagamentoCartão() {
     }
 
     public PagamentoCartão(Integer numeroParcelas) {
         this.numeroParcelas = numeroParcelas;
     }
 
-    public PagamentoCartão() {
-
+    public PagamentoCartão(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {
+        super(id, estado, pedido);
+        this.numeroParcelas = numeroParcelas;
     }
 
     public Integer getNumeroParcelas() {

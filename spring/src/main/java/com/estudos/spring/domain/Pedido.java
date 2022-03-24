@@ -1,9 +1,8 @@
 package com.estudos.spring.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -17,11 +16,18 @@ public class Pedido implements Serializable {
     private Integer id;
     private Date instante;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido") //Mapeamento 1 pra 1 com pedido e pagamento com mesmo ID. //Cascade é o processo de cascatear dependencias para que seja criada ou deletada em conjunto.
     private Pagamento pagamento;
+
+    @OneToOne
     private Cliente cliente;
+
+    @OneToOne
+    @JoinColumn(name = "endereco_entrega_id")
     private Endereco enderecoEntrega;
 
-    public Pedido() {}
+    public Pedido() {
+    }
 
     public Pedido(Integer id, Date instante, Pagamento pagamento, Cliente cliente, Endereco enderecoEntrega) {
         this.id = id;

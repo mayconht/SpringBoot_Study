@@ -2,10 +2,7 @@ package com.estudos.spring.domain;
 
 import com.estudos.spring.domain.enums.EstadoPagamento;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,9 +11,12 @@ public class Pagamento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private EstadoPagamento estado;
+
+    @OneToOne
+    @JoinColumn(name = "pedido_id" )
+    @MapsId // Vai Mapear o ID do pagamento para que seja igual ao do pedido.
     private Pedido pedido;
 
 
