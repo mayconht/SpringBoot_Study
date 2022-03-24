@@ -3,7 +3,6 @@ package com.estudos.spring.domain;
 import com.estudos.spring.domain.enums.EstadoPagamento;
 
 import javax.persistence.Entity;
-import java.util.Date;
 
 @Entity
 public class PagamentoCartao extends Pagamento {

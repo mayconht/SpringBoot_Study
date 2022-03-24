@@ -1,6 +1,7 @@
 package com.estudos.spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -89,6 +90,7 @@ public class Endereco {
         this.cep = cep;
     }
 
+    @JsonIgnore
     public Cliente getCliente() {
         return cliente;
     }

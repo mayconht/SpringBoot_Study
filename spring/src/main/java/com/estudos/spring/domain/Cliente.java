@@ -1,6 +1,7 @@
 package com.estudos.spring.domain;
 
 import com.estudos.spring.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -16,12 +17,19 @@ public class Cliente implements Serializable {
     private Integer id;
 
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
+    @JsonIgnore
+    private String password;
+
+    @Column(unique = true)
     private String cpfOuCnpj;
     private Integer tipo; // Atenção aos getters e setters.
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 
     //implementação sem dominio para conexão fraca entre objetos 1 pra muitos.
@@ -29,7 +37,7 @@ public class Cliente implements Serializable {
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 
@@ -86,6 +94,10 @@ public class Cliente implements Serializable {
         this.tipo = tipo.getCod();
     }
 
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
     public List<Endereco> getEnderecos() {
         return enderecos;
     }
@@ -102,16 +114,20 @@ public class Cliente implements Serializable {
         this.telefones = telefones;
     }
 
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
-
     public List<Pedido> getPedidos() {
         return pedidos;
     }
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

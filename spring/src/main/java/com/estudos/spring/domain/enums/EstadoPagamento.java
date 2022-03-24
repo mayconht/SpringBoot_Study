@@ -13,14 +13,6 @@ public enum EstadoPagamento {
         this.descricao = descricao;
     }
 
-    public int getCod() {
-        return cod;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
     public static EstadoPagamento toEnum(Integer cod) {
         if (cod == null) {
             return null;
@@ -31,5 +23,13 @@ public enum EstadoPagamento {
             }
         }
         throw new IllegalArgumentException("Codigo Invalido: " + cod);
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }
