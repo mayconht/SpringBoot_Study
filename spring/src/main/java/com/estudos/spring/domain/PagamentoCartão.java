@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class PagamentoCartão extends Pagamento {
     private static final long serialVersionUID = 1L;
+
     private Integer numeroParcelas;
 
     public PagamentoCartão(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {

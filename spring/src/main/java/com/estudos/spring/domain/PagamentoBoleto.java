@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class PagamentoBoleto extends Pagamento {
     private static final long serialVersionUID = 1L;
+
     private Date dataVencimento;
     private Date dataPagamento;
 
@@ -22,7 +23,7 @@ public class PagamentoBoleto extends Pagamento {
         this.dataPagamento = dataPagamento;
     }
 
-    public PagamentoBoleto(){
+    public PagamentoBoleto() {
 
     }
 
