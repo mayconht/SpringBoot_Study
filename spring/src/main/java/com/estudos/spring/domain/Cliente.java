@@ -2,7 +2,6 @@ package com.estudos.spring.domain;
 
 import com.estudos.spring.domain.enums.TipoCliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,7 +27,7 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipo; // Atenção aos getters e setters.
 
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 

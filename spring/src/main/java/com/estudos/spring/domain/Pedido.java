@@ -1,7 +1,5 @@
 package com.estudos.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +15,7 @@ public class Pedido implements Serializable {
     private Integer id;
     private Date instante;
 
-    @JsonManagedReference
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     private Pagamento pagamento;
 

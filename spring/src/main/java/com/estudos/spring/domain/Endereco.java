@@ -1,6 +1,5 @@
 package com.estudos.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -23,7 +22,7 @@ public class Endereco {
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
