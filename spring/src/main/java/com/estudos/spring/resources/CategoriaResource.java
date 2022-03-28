@@ -1,6 +1,7 @@
 package com.estudos.spring.resources;
 
 import com.estudos.spring.domain.Categoria;
+import com.estudos.spring.dto.CategoriaDTO;
 import com.estudos.spring.services.CategoriaService;
 import com.estudos.spring.services.exceptions.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 //Classe controladora Rest
 
@@ -60,6 +63,13 @@ public class CategoriaResource {
         }
         return ResponseEntity.noContent().build();
 
+    }
+
+    @RequestMapping( method = RequestMethod.GET)
+    public ResponseEntity<List<CategoriaDTO>> findAll() {
+        List<Categoria> catList = service.findAll();
+        List<CategoriaDTO> listDTO = catList.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 }
 
