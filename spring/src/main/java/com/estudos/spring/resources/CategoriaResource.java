@@ -2,7 +2,9 @@ package com.estudos.spring.resources;
 
 import com.estudos.spring.domain.Categoria;
 import com.estudos.spring.services.CategoriaService;
+import com.estudos.spring.services.exceptions.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -51,8 +53,11 @@ public class CategoriaResource {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
-        service.delete(id);
-
+        try {
+            service.delete(id);
+        }catch (DataIntegrityViolationException e){
+            throw new DataIntegrityException("Not able to delete a category that has products associated to it");
+        }
         return ResponseEntity.noContent().build();
 
     }
