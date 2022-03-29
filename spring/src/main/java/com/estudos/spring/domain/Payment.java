@@ -9,28 +9,28 @@ import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) // Herança
-public abstract class Pagamento implements Serializable {
+public abstract class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
     @Id
     private Integer id;
-    private Integer estado;
+    private Integer status;
 
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "order_id")
     @MapsId
-    private Pedido pedido;
+    private Order order;
 
-    public Pagamento() {
+    public Payment() {
     }
 
-    public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+    public Payment(Integer id, EstadoPagamento status, Order order) {
         super();
         this.id = id;
-        this.estado = estado.getCod();
-        this.pedido = pedido;
+        this.status = status.getCod();
+        this.order = order;
     }
 
     public Integer getId() {
@@ -41,28 +41,28 @@ public abstract class Pagamento implements Serializable {
         this.id = id;
     }
 
-    public EstadoPagamento getEstado() {
-        return EstadoPagamento.toEnum(estado);
+    public EstadoPagamento getStatus() {
+        return EstadoPagamento.toEnum(status);
     }
 
-    public void setEstado(EstadoPagamento estado) {
-        this.estado = estado.getCod();
+    public void setStatus(EstadoPagamento status) {
+        this.status = status.getCod();
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pagamento)) return false;
-        Pagamento pagamento = (Pagamento) o;
-        return id.equals(pagamento.id);
+        if (!(o instanceof Payment)) return false;
+        Payment payment = (Payment) o;
+        return id.equals(payment.id);
     }
 
     @Override

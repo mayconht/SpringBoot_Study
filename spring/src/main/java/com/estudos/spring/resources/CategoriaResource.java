@@ -1,7 +1,7 @@
 package com.estudos.spring.resources;
 
-import com.estudos.spring.domain.Categoria;
-import com.estudos.spring.dto.CategoriaDTO;
+import com.estudos.spring.domain.Category;
+import com.estudos.spring.dto.CategoryDTO;
 import com.estudos.spring.services.CategoriaService;
 import com.estudos.spring.services.exceptions.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ public class CategoriaResource {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
 
-        Categoria obj = service.find(id);
+        Category obj = service.find(id);
 
         return ResponseEntity.ok(obj);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Categoria obj) {
+    public ResponseEntity<Void> insert(@RequestBody Category obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -45,7 +45,7 @@ public class CategoriaResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Categoria obj) {
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Category obj) {
 
         obj.setId(id);
         service.update(obj);
@@ -66,9 +66,9 @@ public class CategoriaResource {
     }
 
     @RequestMapping( method = RequestMethod.GET)
-    public ResponseEntity<List<CategoriaDTO>> findAll() {
-        List<Categoria> catList = service.findAll();
-        List<CategoriaDTO> listDTO = catList.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+    public ResponseEntity<List<CategoryDTO>> findAll() {
+        List<Category> catList = service.findAll();
+        List<CategoryDTO> listDTO = catList.stream().map(obj -> new CategoryDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
 }

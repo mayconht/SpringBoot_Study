@@ -1,6 +1,6 @@
 package com.estudos.spring.resources;
 
-import com.estudos.spring.domain.Cliente;
+import com.estudos.spring.domain.Client;
 import com.estudos.spring.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class ClienteResource {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
-        Cliente obj = clienteService.find(id);
+        Client obj = clienteService.find(id);
 
         return ResponseEntity.ok(obj);
     }
