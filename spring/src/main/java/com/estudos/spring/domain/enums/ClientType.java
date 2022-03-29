@@ -5,10 +5,10 @@ public enum ClientType {
     NATURALPERSON(1, "Natural Person"),
     COMPANY(2, "Legal Person");
 
-    private int cod;
-    private String description;
+    private final int cod;
+    private final String description;
 
-    private ClientType(int cod, String description) {
+    ClientType(int cod, String description) {
         this.cod = cod;
         this.description = description;
     }

@@ -93,15 +93,15 @@ public class Client implements Serializable {
         this.type = type.getCod();
     }
 
-    public void setTipo(Integer tipo) {
-        this.type = tipo;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public List<Address> getEnderecos() {
+    public List<Address> getAddress() {
         return addresses;
     }
 
-    public void setEnderecos(List<Address> addresses) {
+    public void setAddress(List<Address> addresses) {
         this.addresses = addresses;
     }
 

@@ -5,8 +5,8 @@ public enum PaymentStatus {
     PAID(2, "Paid"),
     CANCELED(3, "Canceled");
 
-    private int cod;
-    private String description;
+    private final int cod;
+    private final String description;
 
     PaymentStatus(int cod, String description) {
         this.cod = cod;

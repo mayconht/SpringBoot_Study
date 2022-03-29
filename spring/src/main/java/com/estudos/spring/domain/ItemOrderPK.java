@@ -61,11 +61,8 @@ public class ItemOrderPK implements Serializable {
         } else if (!order.equals(other.order))
             return false;
         if (product == null) {
-            if (other.product != null)
-                return false;
-        } else if (!product.equals(other.product))
-            return false;
-        return true;
+            return other.product == null;
+        } else return product.equals(other.product);
     }
 
 
