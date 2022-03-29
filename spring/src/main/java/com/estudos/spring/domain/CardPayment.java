@@ -1,6 +1,6 @@
 package com.estudos.spring.domain;
 
-import com.estudos.spring.domain.enums.EstadoPagamento;
+import com.estudos.spring.domain.enums.PaymentStatus;
 
 import javax.persistence.Entity;
 
@@ -17,7 +17,7 @@ public class CardPayment extends Payment {
         this.installmentNumber = installmentNumber;
     }
 
-    public CardPayment(Integer id, EstadoPagamento state, Order orders, Integer installmentNumber) {
+    public CardPayment(Integer id, PaymentStatus state, Order orders, Integer installmentNumber) {
         super(id, state, orders);
         this.installmentNumber = installmentNumber;
     }

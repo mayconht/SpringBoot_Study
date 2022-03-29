@@ -1,8 +1,8 @@
 package com.estudos.spring;
 
 import com.estudos.spring.domain.*;
-import com.estudos.spring.domain.enums.EstadoPagamento;
-import com.estudos.spring.domain.enums.TipoCliente;
+import com.estudos.spring.domain.enums.PaymentStatus;
+import com.estudos.spring.domain.enums.ClientType;
 import com.estudos.spring.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -64,7 +64,7 @@ public class Application implements CommandLineRunner {
 
         City cid1 = new City(null, "Alegre", est1);
 
-        Client cli1 = new Client(null, "maycon douglas", "maycondss@live.com", "45852336859", TipoCliente.PESSOAFISICA);
+        Client cli1 = new Client(null, "maycon douglas", "maycondss@live.com", "45852336859", ClientType.PESSOAFISICA);
         cli1.getPhone().addAll(Arrays.asList("+551530313161", "+556230343312"));
 
         Address end1 = new Address(null, "Rua sei la das quantas", "300", null, "Jardiam", "3856125", cli1, cid1);
@@ -78,7 +78,7 @@ public class Application implements CommandLineRunner {
         addressRepository.saveAll(Arrays.asList(end1, end2));
 
         Order ped1 = new Order(null, sdt.parse("30/09/2022 10:20"), cli1, end1);
-        Payment pag1 = new CardPayment(null, EstadoPagamento.QUITADO, ped1, 6);
+        Payment pag1 = new CardPayment(null, PaymentStatus.PAID, ped1, 6);
 
         ped1.setPagamento(pag1);
         cli1.getOrders().addAll(Arrays.asList(ped1));

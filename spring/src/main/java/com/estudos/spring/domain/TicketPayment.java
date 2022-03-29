@@ -1,6 +1,6 @@
 package com.estudos.spring.domain;
 
-import com.estudos.spring.domain.enums.EstadoPagamento;
+import com.estudos.spring.domain.enums.PaymentStatus;
 
 import javax.persistence.Entity;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class TicketPayment extends Payment {
         this.paymentDate = paymentDate;
     }
 
-    public TicketPayment(Integer id, EstadoPagamento status, Order order, Date dueDate, Date paymentDate) {
+    public TicketPayment(Integer id, PaymentStatus status, Order order, Date dueDate, Date paymentDate) {
         super(id, status, order);
         this.dueDate = dueDate;
         this.paymentDate = paymentDate;

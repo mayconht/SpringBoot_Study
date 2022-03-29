@@ -1,24 +1,24 @@
 package com.estudos.spring.domain.enums;
 
 //Estudar Melhor os Enum Type.
-public enum TipoCliente {
-    PESSOAFISICA(1, "Pessoa Física"),
-    PESSOAJURIDICA(2, "Pessoa Jurídica");
+public enum ClientType {
+    NATURALPERSON(1, "Natural Person"),
+    COMPANY(2, "Legal Person");
 
     private int cod;
-    private String descricao;
+    private String description;
 
-    private TipoCliente(int cod, String descricao) {
+    private ClientType(int cod, String description) {
         this.cod = cod;
-        this.descricao = descricao;
+        this.description = description;
     }
 
     //Validação do tipo cliente (proteção de codigo)
-    public static TipoCliente toEnum(Integer cod) {
+    public static ClientType toEnum(Integer cod) {
         if (cod == null) {
             return null;
         }
-        for (TipoCliente x : TipoCliente.values()) {
+        for (ClientType x : ClientType.values()) {
             if (cod.equals(x.getCod())) {
                 return x;
             }
@@ -30,8 +30,8 @@ public enum TipoCliente {
         return cod;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 }
 
