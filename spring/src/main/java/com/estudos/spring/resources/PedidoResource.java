@@ -1,7 +1,7 @@
 package com.estudos.spring.resources;
 
 
-import com.estudos.spring.domain.Pedido;
+import com.estudos.spring.domain.Order;
 import com.estudos.spring.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class PedidoResource {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
-        Pedido obj = pedidoService.find(id);
+        Order obj = pedidoService.find(id);
 
         return ResponseEntity.ok(obj);
     }
