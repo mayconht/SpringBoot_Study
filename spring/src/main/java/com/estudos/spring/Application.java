@@ -16,23 +16,23 @@ import java.util.Arrays;
 public class Application implements CommandLineRunner {
 
     @Autowired
-    private CategoriaRepository catRepo;
+    private CategoryRepository catRepo;
     @Autowired
-    private ProdutoRepository prodRepo;
+    private ProductRepository prodRepo;
     @Autowired
-    private EnderecoRepository enderecoRepository;
+    private AddressRepository addressRepository;
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClientRepository clientRepository;
     @Autowired
-    private CidadeRepository cidadeRepository;
+    private CityRepository cityRepository;
     @Autowired
-    private EstadoRepository estadoRepository;
+    private StateRepository stateRepository;
     @Autowired
-    private PagamentoRepository pagamentoRepository;
+    private PaymentRepository paymentRepository;
     @Autowired
-    private PedidoRepository pedidoRepository;
+    private OrderRepository orderRepository;
     @Autowired
-    private ItemPedidoRepository itemPedidoRepository;
+    private ItemOrderRepository itemOrderRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -72,10 +72,10 @@ public class Application implements CommandLineRunner {
 
         cli1.getEnderecos().addAll(Arrays.asList(end1, end2));
 
-        estadoRepository.saveAll(Arrays.asList(est1));
-        cidadeRepository.saveAll(Arrays.asList(cid1));
-        clienteRepository.saveAll(Arrays.asList(cli1));
-        enderecoRepository.saveAll(Arrays.asList(end1, end2));
+        stateRepository.saveAll(Arrays.asList(est1));
+        cityRepository.saveAll(Arrays.asList(cid1));
+        clientRepository.saveAll(Arrays.asList(cli1));
+        addressRepository.saveAll(Arrays.asList(end1, end2));
 
         Order ped1 = new Order(null, sdt.parse("30/09/2022 10:20"), cli1, end1);
         Payment pag1 = new CardPayment(null, EstadoPagamento.QUITADO, ped1, 6);
@@ -83,15 +83,15 @@ public class Application implements CommandLineRunner {
         ped1.setPagamento(pag1);
         cli1.getOrders().addAll(Arrays.asList(ped1));
 
-        pedidoRepository.saveAll(Arrays.asList(ped1));
-        pagamentoRepository.saveAll(Arrays.asList(pag1));
+        orderRepository.saveAll(Arrays.asList(ped1));
+        paymentRepository.saveAll(Arrays.asList(pag1));
 
         ItemOrder ip1 = new ItemOrder(ped1, p1, 00.00, 1, 800.00);
         ItemOrder ip2 = new ItemOrder(ped1, p3, 00.00, 2, 600.00);
 
         ped1.getItems().addAll(Arrays.asList(ip1, ip2));
 
-        itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2));
+        itemOrderRepository.saveAll(Arrays.asList(ip1, ip2));
 
     }
 }

@@ -1,7 +1,7 @@
 package com.estudos.spring.services;
 
 import com.estudos.spring.domain.Category;
-import com.estudos.spring.repositories.CategoriaRepository;
+import com.estudos.spring.repositories.CategoryRepository;
 import com.estudos.spring.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class CategoriaService {
 
 
     @Autowired // Injeção de Dependencia, não há necessidade de instanciar. (inversão de controle)
-    private CategoriaRepository repo;
+    private CategoryRepository repo;
 
     public Category find(Integer id) {
         Optional<Category> obj = repo.findById(id);
