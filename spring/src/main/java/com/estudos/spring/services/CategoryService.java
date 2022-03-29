@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoriaService {
+public class CategoryService {
 
 
     @Autowired // Injeção de Dependencia, não há necessidade de instanciar. (inversão de controle)
@@ -18,7 +18,7 @@ public class CategoriaService {
 
     public Category find(Integer id) {
         Optional<Category> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Category não encontrada: " + id + ", Tipo: " + Category.class.getName()));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Category not found: " + id + ", Type: " + Category.class.getName()));
     }
 
     public List<Category> findAll (){

@@ -1,7 +1,7 @@
 package com.estudos.spring.resources;
 
 import com.estudos.spring.domain.Client;
-import com.estudos.spring.services.ClienteService;
+import com.estudos.spring.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientResource {
 
     @Autowired
-    private ClienteService clientService;
+    private ClientService clientService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {

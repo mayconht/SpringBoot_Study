@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class PedidoService {
+public class OrderService {
 
     @Autowired // Injeção de Dependencia, não há necessidade de instanciar. (inversão de controle)
     private OrderRepository repo;
 
     public Order find(Integer id) {
         Optional<Order> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Order não encontrada: " + id + ", Tipo: " + Order.class.getName()));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Order not found: " + id + ", Type: " + Order.class.getName()));
     }
 }
