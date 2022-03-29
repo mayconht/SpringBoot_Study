@@ -2,7 +2,7 @@ package com.estudos.spring.resources;
 
 import com.estudos.spring.domain.Category;
 import com.estudos.spring.dto.CategoryDTO;
-import com.estudos.spring.services.CategoriaService;
+import com.estudos.spring.services.CategoryService;
 import com.estudos.spring.services.exceptions.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class CategoryResource {
 
     @Autowired
-    private CategoriaService service;
+    private CategoryService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Category> find(@PathVariable Integer id) {
