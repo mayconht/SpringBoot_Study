@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/clientes")
-public class ClienteResource {
+@RequestMapping(value = "/clients")
+public class ClientResource {
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteService clientService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
-        Client obj = clienteService.find(id);
+        Client obj = clientService.find(id);
 
         return ResponseEntity.ok(obj);
     }

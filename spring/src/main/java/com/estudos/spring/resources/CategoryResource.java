@@ -17,14 +17,14 @@ import java.util.stream.Collectors;
 //Classe controladora Rest
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
+@RequestMapping(value = "/categories")
+public class CategoryResource {
 
     @Autowired
     private CategoriaService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> find(@PathVariable Integer id) {
+    public ResponseEntity<Category> find(@PathVariable Integer id) {
 
         Category obj = service.find(id);
 
@@ -45,7 +45,7 @@ public class CategoriaResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Category obj) {
+    public ResponseEntity<Category> update(@PathVariable Integer id, @RequestBody Category obj) {
 
         obj.setId(id);
         service.update(obj);
