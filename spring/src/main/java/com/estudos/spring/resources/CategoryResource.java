@@ -68,7 +68,7 @@ public class CategoryResource {
     @RequestMapping( method = RequestMethod.GET)
     public ResponseEntity<List<CategoryDTO>> findAll() {
         List<Category> catList = service.findAll();
-        List<CategoryDTO> listDTO = catList.stream().map(obj -> new CategoryDTO(obj)).collect(Collectors.toList());
+        List<CategoryDTO> listDTO = catList.stream().map(CategoryDTO::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
 }

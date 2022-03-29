@@ -29,9 +29,9 @@ public class CategoryService {
         return repo.save(obj);
     }
 
-    public Category update(Category obj) {
+    public void update(Category obj) {
         find(obj.getId());
-        return repo.save(obj);
+        repo.save(obj);
     }
 
     public void delete(Integer id) {

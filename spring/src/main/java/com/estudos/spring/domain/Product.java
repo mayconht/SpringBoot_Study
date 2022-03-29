@@ -45,7 +45,7 @@ public class Product implements Serializable {
     public List<Order> getOrders() {
         List<Order> list = new ArrayList<>();
         for (ItemOrder x : items) {
-            list.add(x.getPedido());
+            list.add(x.getOrder());
         }
         return list;
     }
@@ -109,11 +109,8 @@ public class Product implements Serializable {
             return false;
         Product other = (Product) obj;
         if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+            return other.id == null;
+        } else return id.equals(other.id);
     }
 
 

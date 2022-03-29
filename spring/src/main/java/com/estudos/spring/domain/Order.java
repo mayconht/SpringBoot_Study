@@ -57,27 +57,27 @@ public class Order implements Serializable {
         this.moment = moment;
     }
 
-    public Payment getPagamento() {
+    public Payment getPayment() {
         return payment;
     }
 
-    public void setPagamento(Payment payment) {
+    public void setPayment(Payment payment) {
         this.payment = payment;
     }
 
-    public Client getCliente() {
+    public Client getClient() {
         return client;
     }
 
-    public void setCliente(Client client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 
-    public Address getEnderecoDeEntrega() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setEnderecoDeEntrega(Address addressDeEntrega) {
+    public void setDeliveryAddress(Address addressDeEntrega) {
         this.deliveryAddress = addressDeEntrega;
     }
 
@@ -107,11 +107,8 @@ public class Order implements Serializable {
             return false;
         Order other = (Order) obj;
         if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+            return other.id == null;
+        } else return id.equals(other.id);
     }
 
 
