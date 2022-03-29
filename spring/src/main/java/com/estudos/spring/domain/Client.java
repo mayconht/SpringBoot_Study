@@ -1,6 +1,6 @@
 package com.estudos.spring.domain;
 
-import com.estudos.spring.domain.enums.TipoCliente;
+import com.estudos.spring.domain.enums.ClientType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -43,7 +43,7 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(Integer id, String name, String email, String cpfOrCnpj, TipoCliente type) {
+    public Client(Integer id, String name, String email, String cpfOrCnpj, ClientType type) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -83,13 +83,13 @@ public class Client implements Serializable {
         this.cpfOrCnpj = cpfOrCnpj;
     }
 
-    //Usando a função TipoCliente para verificação
-    public TipoCliente getType() {
-        return TipoCliente.toEnum(type);
+    //Usando a função ClientType para verificação
+    public ClientType getType() {
+        return ClientType.toEnum(type);
     }
 
     //Armazenando Tipo Inteiro.
-    public void setType(TipoCliente type) {
+    public void setType(ClientType type) {
         this.type = type.getCod();
     }
 

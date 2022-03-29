@@ -1,6 +1,6 @@
 package com.estudos.spring.domain;
 
-import com.estudos.spring.domain.enums.EstadoPagamento;
+import com.estudos.spring.domain.enums.PaymentStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -26,7 +26,7 @@ public abstract class Payment implements Serializable {
     public Payment() {
     }
 
-    public Payment(Integer id, EstadoPagamento status, Order order) {
+    public Payment(Integer id, PaymentStatus status, Order order) {
         super();
         this.id = id;
         this.status = status.getCod();
@@ -41,11 +41,11 @@ public abstract class Payment implements Serializable {
         this.id = id;
     }
 
-    public EstadoPagamento getStatus() {
-        return EstadoPagamento.toEnum(status);
+    public PaymentStatus getStatus() {
+        return PaymentStatus.toEnum(status);
     }
 
-    public void setStatus(EstadoPagamento status) {
+    public void setStatus(PaymentStatus status) {
         this.status = status.getCod();
     }
 
