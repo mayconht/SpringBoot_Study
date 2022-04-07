@@ -14,8 +14,8 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client find(Integer id) {
-        Optional<Client> obj = clientRepository.findById(id);
+    public Client find(final Integer id) {
+        final Optional<Client> obj = clientRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Client not found: " + id + "Typo: " + Client.class.getName()));
     }
 }

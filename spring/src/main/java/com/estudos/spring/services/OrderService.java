@@ -14,8 +14,8 @@ public class OrderService {
     @Autowired // Injeção de Dependencia, não há necessidade de instanciar. (inversão de controle)
     private OrderRepository repo;
 
-    public Order find(Integer id) {
-        Optional<Order> obj = repo.findById(id);
+    public Order find(final Integer id) {
+        final Optional<Order> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Order not found: " + id + ", Type: " + Order.class.getName()));
     }
 }

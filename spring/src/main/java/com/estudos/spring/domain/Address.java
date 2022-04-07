@@ -2,7 +2,12 @@ package com.estudos.spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 @Entity
@@ -30,7 +35,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(Integer id, String street, String number, String complement, String district, String zipCode, Client client, City city) {
+    public Address(final Integer id, final String street, final String number, final String complement, final String district, final String zipCode, final Client client, final City city) {
         this.id = id;
         this.street = street;
         this.number = number;
@@ -45,7 +50,7 @@ public class Address {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -53,7 +58,7 @@ public class Address {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(final String street) {
         this.street = street;
     }
 
@@ -61,7 +66,7 @@ public class Address {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(final String number) {
         this.number = number;
     }
 
@@ -69,7 +74,7 @@ public class Address {
         return complement;
     }
 
-    public void setComplement(String complement) {
+    public void setComplement(final String complement) {
         this.complement = complement;
     }
 
@@ -77,7 +82,7 @@ public class Address {
         return district;
     }
 
-    public void setDistrict(String district) {
+    public void setDistrict(final String district) {
         this.district = district;
     }
 
@@ -85,7 +90,7 @@ public class Address {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(final String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -94,7 +99,7 @@ public class Address {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(final Client client) {
         this.client = client;
     }
 
@@ -102,15 +107,19 @@ public class Address {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(final City city) {
         this.city = city;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-        Address address = (Address) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Address)) {
+            return false;
+        }
+        final Address address = (Address) o;
         return id.equals(address.id);
     }
 

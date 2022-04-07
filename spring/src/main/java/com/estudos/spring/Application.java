@@ -1,17 +1,18 @@
 package com.estudos.spring;
 
-import com.estudos.spring.domain.*;
-import com.estudos.spring.domain.enums.PaymentStatus;
-import com.estudos.spring.domain.enums.ClientType;
-import com.estudos.spring.repositories.*;
+import com.estudos.spring.repositories.AddressRepository;
+import com.estudos.spring.repositories.CategoryRepository;
+import com.estudos.spring.repositories.CityRepository;
+import com.estudos.spring.repositories.ClientRepository;
+import com.estudos.spring.repositories.ItemOrderRepository;
+import com.estudos.spring.repositories.OrderRepository;
+import com.estudos.spring.repositories.PaymentRepository;
+import com.estudos.spring.repositories.ProductRepository;
+import com.estudos.spring.repositories.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -35,12 +36,12 @@ public class Application implements CommandLineRunner {
     @Autowired
     private ItemOrderRepository itemOrderRepository;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(final String... args) throws Exception {
 //	 	Only use with H2 database (temporary data)
 //        SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 //

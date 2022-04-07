@@ -2,7 +2,14 @@ package com.estudos.spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,34 +35,24 @@ public class Product implements Serializable {
     private List<Category> categories = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "id.product")
+    @OneToMany(mappedBy = "product")
     private Set<ItemOrder> items = new HashSet<>();
 
     public Product() {
     }
 
-    public Product(Integer id, String name, Double price) {
+    public Product(final Integer id, final String name, final Double price) {
         super();
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    @JsonIgnore
-    public List<Order> getOrders() {
-        List<Order> list = new ArrayList<>();
-        for (ItemOrder x : items) {
-            list.add(x.getOrder());
-        }
-        return list;
-    }
-
-
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -63,7 +60,7 @@ public class Product implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -71,7 +68,7 @@ public class Product implements Serializable {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(final Double price) {
         this.price = price;
     }
 
@@ -79,7 +76,7 @@ public class Product implements Serializable {
         return categories;
     }
 
-    public void setCategory(List<Category> categories) {
+    public void setCategory(final List<Category> categories) {
         this.categories = categories;
     }
 
@@ -87,7 +84,7 @@ public class Product implements Serializable {
         return items;
     }
 
-    public void setItems(Set<ItemOrder> items) {
+    public void setItems(final Set<ItemOrder> items) {
         this.items = items;
     }
 
@@ -100,17 +97,22 @@ public class Product implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        Product other = (Product) obj;
+        }
+        final Product other = (Product) obj;
         if (id == null) {
             return other.id == null;
-        } else return id.equals(other.id);
+        } else {
+            return id.equals(other.id);
+        }
     }
 
 

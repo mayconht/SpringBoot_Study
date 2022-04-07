@@ -13,13 +13,13 @@ public class TicketPayment extends Payment {
     private Date paymentDate;
 
 
-    public TicketPayment(Date dueDate, Date paymentDate) {
+    public TicketPayment(final Date dueDate, final Date paymentDate) {
         super();
         this.dueDate = dueDate;
         this.paymentDate = paymentDate;
     }
 
-    public TicketPayment(Integer id, PaymentStatus status, Order order, Date dueDate, Date paymentDate) {
+    public TicketPayment(final Integer id, final PaymentStatus status, final Order order, final Date dueDate, final Date paymentDate) {
         super(id, status, order);
         this.dueDate = dueDate;
         this.paymentDate = paymentDate;
@@ -33,7 +33,7 @@ public class TicketPayment extends Payment {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(final Date dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -41,7 +41,7 @@ public class TicketPayment extends Payment {
         return paymentDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
+    public void setPaymentDate(final Date paymentDate) {
         this.paymentDate = paymentDate;
     }
 }

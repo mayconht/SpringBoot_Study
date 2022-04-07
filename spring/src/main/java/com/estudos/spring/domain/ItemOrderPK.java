@@ -14,7 +14,7 @@ public class ItemOrderPK implements Serializable {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-
+ 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
@@ -24,7 +24,7 @@ public class ItemOrderPK implements Serializable {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(final Order order) {
         this.order = order;
     }
 
@@ -33,7 +33,7 @@ public class ItemOrderPK implements Serializable {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(final Product product) {
         this.product = product;
     }
 
@@ -47,22 +47,29 @@ public class ItemOrderPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        ItemOrderPK other = (ItemOrderPK) obj;
+        }
+        final ItemOrderPK other = (ItemOrderPK) obj;
         if (order == null) {
-            if (other.order != null)
+            if (other.order != null) {
                 return false;
-        } else if (!order.equals(other.order))
+            }
+        } else if (!order.equals(other.order)) {
             return false;
+        }
         if (product == null) {
             return other.product == null;
-        } else return product.equals(other.product);
+        } else {
+            return product.equals(other.product);
+        }
     }
 
 
