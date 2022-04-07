@@ -1,5 +1,7 @@
 package com.estudos.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,15 +17,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Order implements Serializable {
+public class ClientOrder implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date moment;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "clientOrder")
     private Payment payment;
 
     @ManyToOne
@@ -34,13 +38,13 @@ public class Order implements Serializable {
     @JoinColumn(name = "deliveryAddress_id")
     private Address deliveryAddress;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "id.order_id.id")
     private Set<ItemOrder> items = new HashSet<>();
 
-    public Order() {
+    public ClientOrder() {
     }
 
-    public Order(final Integer id, final Date moment, final Client client, final Address deliveryAddress) {
+    public ClientOrder(final Integer id, final Date moment, final Client client, final Address deliveryAddress) {
         super();
         this.id = id;
         this.moment = moment;
@@ -115,7 +119,7 @@ public class Order implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Order other = (Order) obj;
+        final ClientOrder other = (ClientOrder) obj;
         if (id == null) {
             return other.id == null;
         } else {

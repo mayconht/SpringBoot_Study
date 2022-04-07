@@ -1,6 +1,6 @@
 package com.estudos.spring.services;
 
-import com.estudos.spring.domain.Order;
+import com.estudos.spring.domain.ClientOrder;
 import com.estudos.spring.repositories.OrderRepository;
 import com.estudos.spring.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,8 @@ public class OrderService {
     @Autowired // Injeção de Dependencia, não há necessidade de instanciar. (inversão de controle)
     private OrderRepository repo;
 
-    public Order find(final Integer id) {
-        final Optional<Order> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Order not found: " + id + ", Type: " + Order.class.getName()));
+    public ClientOrder find(final Integer id) {
+        final Optional<ClientOrder> obj = repo.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("ClientOrder not found: " + id + ", Type: " + ClientOrder.class.getName()));
     }
 }

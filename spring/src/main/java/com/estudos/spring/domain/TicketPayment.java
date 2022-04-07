@@ -19,8 +19,8 @@ public class TicketPayment extends Payment {
         this.paymentDate = paymentDate;
     }
 
-    public TicketPayment(final Integer id, final PaymentStatus status, final Order order, final Date dueDate, final Date paymentDate) {
-        super(id, status, order);
+    public TicketPayment(final Integer id, final PaymentStatus status, final ClientOrder clientOrder, final Date dueDate, final Date paymentDate) {
+        super(id, status, clientOrder);
         this.dueDate = dueDate;
         this.paymentDate = paymentDate;
     }

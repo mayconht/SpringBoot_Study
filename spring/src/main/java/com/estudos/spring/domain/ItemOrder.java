@@ -2,27 +2,17 @@ package com.estudos.spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Entity
 public class ItemOrder implements Serializable {
     private static final long serialVersionUID = 1L;
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    Order order = new Order();
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    Product product = new Product();
+
     @JsonIgnore
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @EmbeddedId
+    private ItemOrderPK id = new ItemOrderPK();
     private Double discount;
     private Integer quantity;
     private Double price;
@@ -30,38 +20,28 @@ public class ItemOrder implements Serializable {
     public ItemOrder() {
     }
 
-    public ItemOrder(final Order order, final Product product, final Double discount, final Integer quantity, final Double price) {
+    public ItemOrder(final ClientOrder clientOrder, final Product product, final Double discount, final Integer quantity, final Double price) {
         super();
-        this.order = order;
-        this.product = product;
+        id.setOrder(clientOrder);
+        id.setProduct(product);
         this.discount = discount;
         this.quantity = quantity;
         this.price = price;
     }
 
-
-    @JsonIgnore
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(final Order order) {
-        this.order = order;
+    public ClientOrder getOrder() {
+        return id.getOrder();
     }
 
     public Product getProduct() {
-        return product;
+        return id.getProduct();
     }
 
-    public void setProduct(final Product product) {
-        this.product = product;
-    }
-
-    public Integer getId() {
+    public ItemOrderPK getId() {
         return id;
     }
 
-    public void setId(final Integer id) {
+    public void setId(final ItemOrderPK id) {
         this.id = id;
     }
 

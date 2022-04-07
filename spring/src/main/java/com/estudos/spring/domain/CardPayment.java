@@ -17,8 +17,8 @@ public class CardPayment extends Payment {
         this.installmentNumber = installmentNumber;
     }
 
-    public CardPayment(final Integer id, final PaymentStatus state, final Order orders, final Integer installmentNumber) {
-        super(id, state, orders);
+    public CardPayment(final Integer id, final PaymentStatus state, final ClientOrder clientOrders, final Integer installmentNumber) {
+        super(id, state, clientOrders);
         this.installmentNumber = installmentNumber;
     }
 
