@@ -1,7 +1,7 @@
 package com.estudos.spring.resources;
 
 
-import com.estudos.spring.domain.Order;
+import com.estudos.spring.domain.ClientOrder;
 import com.estudos.spring.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/orders")
+@RequestMapping(value = "/clientOrders")
 public class OrderResource {
 
     @Autowired
@@ -19,7 +19,7 @@ public class OrderResource {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable final Integer id) {
-        final Order obj = orderService.find(id);
+        final ClientOrder obj = orderService.find(id);
 
         return ResponseEntity.ok(obj);
     }

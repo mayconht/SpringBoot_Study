@@ -50,7 +50,7 @@ public class Client implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
-    private List<Order> orders = new ArrayList<>();
+    private List<ClientOrder> clientOrders = new ArrayList<>();
 
     public Client() {
     }
@@ -125,12 +125,12 @@ public class Client implements Serializable {
         this.phone = phone;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<ClientOrder> getOrders() {
+        return clientOrders;
     }
 
-    public void setOrders(final List<Order> orders) {
-        this.orders = orders;
+    public void setOrders(final List<ClientOrder> clientOrders) {
+        this.clientOrders = clientOrders;
     }
 
     public String getPassword() {

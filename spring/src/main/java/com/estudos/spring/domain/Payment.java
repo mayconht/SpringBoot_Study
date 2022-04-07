@@ -25,16 +25,16 @@ public abstract class Payment implements Serializable {
     @JsonIgnore
     @OneToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private ClientOrder clientOrder;
 
     public Payment() {
     }
 
-    public Payment(final Integer id, final PaymentStatus status, final Order order) {
+    public Payment(final Integer id, final PaymentStatus status, final ClientOrder clientOrder) {
         super();
         this.id = id;
         this.status = status.getCod();
-        this.order = order;
+        this.clientOrder = clientOrder;
     }
 
     public Integer getId() {
@@ -53,12 +53,12 @@ public abstract class Payment implements Serializable {
         this.status = status.getCod();
     }
 
-    public Order getOrder() {
-        return order;
+    public ClientOrder getOrder() {
+        return clientOrder;
     }
 
-    public void setOrder(final Order order) {
-        this.order = order;
+    public void setOrder(final ClientOrder clientOrder) {
+        this.clientOrder = clientOrder;
     }
 
     @Override
