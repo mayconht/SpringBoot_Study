@@ -3,12 +3,12 @@ package com.estudos.spring.services.exceptions;
 public class DataIntegrityException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    public DataIntegrityException(String msg) {
+    public DataIntegrityException(final String msg) {
         super(msg);
 
     }
 
-    public DataIntegrityException(String msg, Throwable cause) {
+    public DataIntegrityException(final String msg, final Throwable cause) {
         super(msg, cause);
     }
 

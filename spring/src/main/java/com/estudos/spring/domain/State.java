@@ -2,7 +2,11 @@ package com.estudos.spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +29,7 @@ public class State implements Serializable {
     public State() {
     }
 
-    public State(Integer id, String name, String federativeUnit) {
+    public State(final Integer id, final String name, final String federativeUnit) {
         this.id = id;
         this.name = name;
         this.federativeUnit = federativeUnit;
@@ -35,7 +39,7 @@ public class State implements Serializable {
         return federativeUnit;
     }
 
-    public void setFederativeUnit(String federativeUnit) {
+    public void setFederativeUnit(final String federativeUnit) {
         this.federativeUnit = federativeUnit;
     }
 
@@ -43,7 +47,7 @@ public class State implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -51,7 +55,7 @@ public class State implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -59,15 +63,19 @@ public class State implements Serializable {
         return cities;
     }
 
-    public void setCidades(List<City> cities) {
+    public void setCidades(final List<City> cities) {
         this.cities = cities;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof State)) return false;
-        State state = (State) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof State)) {
+            return false;
+        }
+        final State state = (State) o;
         return id.equals(state.id);
     }
 

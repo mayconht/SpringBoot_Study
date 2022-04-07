@@ -3,9 +3,21 @@ package com.estudos.spring.domain;
 import com.estudos.spring.domain.enums.ClientType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Client implements Serializable {
@@ -43,7 +55,7 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(Integer id, String name, String email, String cpfOrCnpj, ClientType type) {
+    public Client(final Integer id, final String name, final String email, final String cpfOrCnpj, final ClientType type) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -55,7 +67,7 @@ public class Client implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -63,7 +75,7 @@ public class Client implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -71,7 +83,7 @@ public class Client implements Serializable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -79,7 +91,7 @@ public class Client implements Serializable {
         return cpfOrCnpj;
     }
 
-    public void setCpfOrCnpj(String cpfOrCnpj) {
+    public void setCpfOrCnpj(final String cpfOrCnpj) {
         this.cpfOrCnpj = cpfOrCnpj;
     }
 
@@ -89,11 +101,11 @@ public class Client implements Serializable {
     }
 
     //Armazenando Tipo Inteiro.
-    public void setType(ClientType type) {
+    public void setType(final ClientType type) {
         this.type = type.getCod();
     }
 
-    public void setType(Integer type) {
+    public void setType(final Integer type) {
         this.type = type;
     }
 
@@ -101,7 +113,7 @@ public class Client implements Serializable {
         return addresses;
     }
 
-    public void setAddress(List<Address> addresses) {
+    public void setAddress(final List<Address> addresses) {
         this.addresses = addresses;
     }
 
@@ -109,7 +121,7 @@ public class Client implements Serializable {
         return phone;
     }
 
-    public void setPhone(Set<String> phone) {
+    public void setPhone(final Set<String> phone) {
         this.phone = phone;
     }
 
@@ -117,7 +129,7 @@ public class Client implements Serializable {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(final List<Order> orders) {
         this.orders = orders;
     }
 
@@ -125,15 +137,19 @@ public class Client implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Client)) return false;
-        Client client = (Client) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Client)) {
+            return false;
+        }
+        final Client client = (Client) o;
         return id.equals(client.id);
     }
 

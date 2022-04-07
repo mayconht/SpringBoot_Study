@@ -1,6 +1,11 @@
 package com.estudos.spring.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,7 +25,7 @@ public class City implements Serializable {
     public City() {
     }
 
-    public City(Integer id, String name, State state) {
+    public City(final Integer id, final String name, final State state) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -30,7 +35,7 @@ public class City implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -38,7 +43,7 @@ public class City implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -46,15 +51,19 @@ public class City implements Serializable {
         return state;
     }
 
-    public void setState(State state) {
+    public void setState(final State state) {
         this.state = state;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof City)) return false;
-        City city = (City) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof City)) {
+            return false;
+        }
+        final City city = (City) o;
         return id.equals(city.id);
     }
 

@@ -10,10 +10,10 @@ public class CategoryDTO implements Serializable {
     private Integer id;
     private String name;
 
-    public CategoryDTO(){
+    public CategoryDTO() {
     }
 
-    public CategoryDTO(Category category){
+    public CategoryDTO(final Category category) {
         this.id = category.getId();
         this.name = category.getName();
     }
@@ -22,7 +22,7 @@ public class CategoryDTO implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -30,7 +30,7 @@ public class CategoryDTO implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 

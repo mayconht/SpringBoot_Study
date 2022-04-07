@@ -1,6 +1,14 @@
 package com.estudos.spring.domain;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,7 +23,6 @@ public class Order implements Serializable {
     private Integer id;
     private Date moment;
 
-
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Payment payment;
 
@@ -27,13 +34,13 @@ public class Order implements Serializable {
     @JoinColumn(name = "deliveryAddress_id")
     private Address deliveryAddress;
 
-    @OneToMany(mappedBy = "id.order")
+    @OneToMany(mappedBy = "order")
     private Set<ItemOrder> items = new HashSet<>();
 
     public Order() {
     }
 
-    public Order(Integer id, Date moment, Client client, Address deliveryAddress) {
+    public Order(final Integer id, final Date moment, final Client client, final Address deliveryAddress) {
         super();
         this.id = id;
         this.moment = moment;
@@ -45,7 +52,7 @@ public class Order implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -53,7 +60,7 @@ public class Order implements Serializable {
         return moment;
     }
 
-    public void setMoment(Date moment) {
+    public void setMoment(final Date moment) {
         this.moment = moment;
     }
 
@@ -61,7 +68,7 @@ public class Order implements Serializable {
         return payment;
     }
 
-    public void setPayment(Payment payment) {
+    public void setPayment(final Payment payment) {
         this.payment = payment;
     }
 
@@ -69,7 +76,7 @@ public class Order implements Serializable {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(final Client client) {
         this.client = client;
     }
 
@@ -77,7 +84,7 @@ public class Order implements Serializable {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(Address addressDeEntrega) {
+    public void setDeliveryAddress(final Address addressDeEntrega) {
         this.deliveryAddress = addressDeEntrega;
     }
 
@@ -85,7 +92,7 @@ public class Order implements Serializable {
         return items;
     }
 
-    public void setItems(Set<ItemOrder> items) {
+    public void setItems(final Set<ItemOrder> items) {
         this.items = items;
     }
 
@@ -98,17 +105,22 @@ public class Order implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        Order other = (Order) obj;
+        }
+        final Order other = (Order) obj;
         if (id == null) {
             return other.id == null;
-        } else return id.equals(other.id);
+        } else {
+            return id.equals(other.id);
+        }
     }
 
 

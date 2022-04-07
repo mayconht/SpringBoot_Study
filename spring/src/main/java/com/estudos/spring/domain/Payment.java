@@ -3,7 +3,12 @@ package com.estudos.spring.domain;
 import com.estudos.spring.domain.enums.PaymentStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,13 +25,12 @@ public abstract class Payment implements Serializable {
     @JsonIgnore
     @OneToOne
     @JoinColumn(name = "order_id")
-    @MapsId
     private Order order;
 
     public Payment() {
     }
 
-    public Payment(Integer id, PaymentStatus status, Order order) {
+    public Payment(final Integer id, final PaymentStatus status, final Order order) {
         super();
         this.id = id;
         this.status = status.getCod();
@@ -37,7 +41,7 @@ public abstract class Payment implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -45,7 +49,7 @@ public abstract class Payment implements Serializable {
         return PaymentStatus.toEnum(status);
     }
 
-    public void setStatus(PaymentStatus status) {
+    public void setStatus(final PaymentStatus status) {
         this.status = status.getCod();
     }
 
@@ -53,15 +57,19 @@ public abstract class Payment implements Serializable {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(final Order order) {
         this.order = order;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Payment)) return false;
-        Payment payment = (Payment) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Payment)) {
+            return false;
+        }
+        final Payment payment = (Payment) o;
         return id.equals(payment.id);
     }
 

@@ -1,6 +1,11 @@
 package com.estudos.spring.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +28,7 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public Category(Integer id, String name) {
+    public Category(final Integer id, final String name) {
         this.id = id;
         this.name = name;
     }
@@ -32,7 +37,7 @@ public class Category implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -40,7 +45,7 @@ public class Category implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -48,15 +53,19 @@ public class Category implements Serializable {
         return product;
     }
 
-    public void setProduct(List<Product> product) {
+    public void setProduct(final List<Product> product) {
         this.product = product;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final Category category = (Category) o;
         return id.equals(category.id);
     }
 

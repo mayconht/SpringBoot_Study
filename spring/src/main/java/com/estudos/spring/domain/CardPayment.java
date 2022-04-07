@@ -13,11 +13,11 @@ public class CardPayment extends Payment {
     public CardPayment() {
     }
 
-    public CardPayment(Integer installmentNumber) {
+    public CardPayment(final Integer installmentNumber) {
         this.installmentNumber = installmentNumber;
     }
 
-    public CardPayment(Integer id, PaymentStatus state, Order orders, Integer installmentNumber) {
+    public CardPayment(final Integer id, final PaymentStatus state, final Order orders, final Integer installmentNumber) {
         super(id, state, orders);
         this.installmentNumber = installmentNumber;
     }
@@ -26,7 +26,7 @@ public class CardPayment extends Payment {
         return installmentNumber;
     }
 
-    public void setInstallmentNumber(Integer installmentNumber) {
+    public void setInstallmentNumber(final Integer installmentNumber) {
         this.installmentNumber = installmentNumber;
     }
 
