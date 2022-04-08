@@ -6,26 +6,29 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class ItemOrderPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
+
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private ClientOrder clientOrder;
+    private ClientOrder order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
+
     @JsonIgnore
     public ClientOrder getOrder() {
-        return clientOrder;
+        return order;
     }
 
-    public void setOrder(final ClientOrder clientOrder) {
-        this.clientOrder = clientOrder;
+    public void setOrder(final ClientOrder order) {
+        this.order = order;
     }
 
     @JsonIgnore
@@ -38,39 +41,19 @@ public class ItemOrderPK implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((clientOrder == null) ? 0 : clientOrder.hashCode());
-        result = prime * result + ((product == null) ? 0 : product.hashCode());
-        return result;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof ItemOrderPK)) {
+            return false;
+        }
+        final ItemOrderPK that = (ItemOrderPK) o;
+        return Objects.equals(order, that.order) && Objects.equals(product, that.product);
     }
 
     @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ItemOrderPK other = (ItemOrderPK) obj;
-        if (clientOrder == null) {
-            if (other.clientOrder != null) {
-                return false;
-            }
-        } else if (!clientOrder.equals(other.clientOrder)) {
-            return false;
-        }
-        if (product == null) {
-            return other.product == null;
-        } else {
-            return product.equals(other.product);
-        }
+    public int hashCode() {
+        return Objects.hash(order, product);
     }
-
-
 }

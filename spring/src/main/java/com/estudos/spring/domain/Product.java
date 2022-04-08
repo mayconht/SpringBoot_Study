@@ -48,6 +48,14 @@ public class Product implements Serializable {
         this.price = price;
     }
 
+    public List<ClientOrder> getOrders() {
+        final List<ClientOrder> list = new ArrayList<>();
+        for (final ItemOrder x : items) {
+            list.add(x.getOrder());
+        }
+        return list;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -86,6 +94,14 @@ public class Product implements Serializable {
 
     public void setItems(final Set<ItemOrder> items) {
         this.items = items;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(final List<Category> categories) {
+        this.categories = categories;
     }
 
     @Override
