@@ -21,8 +21,6 @@ public class State implements Serializable {
     private String name;
     private String federativeUnit;
 
-
-    @JsonIgnore
     @OneToMany(mappedBy = "state") // da classe cidade que faz o mapeamento principal.
     private List<City> cities;
 
@@ -59,6 +57,7 @@ public class State implements Serializable {
         this.name = name;
     }
 
+    @JsonIgnore
     public List<City> getCidades() {
         return cities;
     }

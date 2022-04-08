@@ -37,13 +37,11 @@ public class Client implements Serializable {
 
     @Column(unique = true)
     private String cpfOrCnpj;
-    private Integer type; // Atenção aos getters e setters.
-
+    private Integer type;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
-    //implementação sem dominio para conexão fraca entre objetos 1 pra muitos.
     @ElementCollection
     @CollectionTable(name = "PHONE")
     private Set<String> phone = new HashSet<>();
@@ -95,12 +93,10 @@ public class Client implements Serializable {
         this.cpfOrCnpj = cpfOrCnpj;
     }
 
-    //Usando a função ClientType para verificação
     public ClientType getType() {
         return ClientType.toEnum(type);
     }
 
-    //Armazenando Tipo Inteiro.
     public void setType(final ClientType type) {
         this.type = type.getCod();
     }

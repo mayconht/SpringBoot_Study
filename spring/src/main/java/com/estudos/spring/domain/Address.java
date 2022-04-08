@@ -94,7 +94,6 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    @JsonIgnore
     public Client getClient() {
         return client;
     }

@@ -31,6 +31,7 @@ public class ItemOrder implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public ClientOrder getOrder() {
         return id.getOrder();
     }
