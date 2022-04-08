@@ -12,7 +12,8 @@ public class ItemOrder implements Serializable {
 
     @JsonIgnore
     @EmbeddedId
-    private ItemOrderPK id = new ItemOrderPK();
+    private final ItemOrderPK id = new ItemOrderPK();
+
     private Double discount;
     private Integer quantity;
     private Double price;
@@ -21,6 +22,7 @@ public class ItemOrder implements Serializable {
     }
 
     public ItemOrder(final ClientOrder clientOrder, final Product product, final Double discount, final Integer quantity, final Double price) {
+
         super();
         id.setOrder(clientOrder);
         id.setProduct(product);
@@ -39,10 +41,6 @@ public class ItemOrder implements Serializable {
 
     public ItemOrderPK getId() {
         return id;
-    }
-
-    public void setId(final ItemOrderPK id) {
-        this.id = id;
     }
 
     public Double getDiscount() {
@@ -68,32 +66,4 @@ public class ItemOrder implements Serializable {
     public void setPrice(final Double price) {
         this.price = price;
     }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ItemOrder other = (ItemOrder) obj;
-        if (id == null) {
-            return other.id == null;
-        } else {
-            return id.equals(other.id);
-        }
-    }
-
 }
